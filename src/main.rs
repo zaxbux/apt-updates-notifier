@@ -22,6 +22,10 @@ fn main() -> Result<()> {
 
             let packages = apt::list_upgradeable()?;
 
+            if packages.len() == 0 {
+                return Ok(());
+            }
+
             let message = mail::build_message(&config, &packages, &output)?;
             let response = mail::send_smtp(&config, message)?;
 
