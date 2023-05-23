@@ -1,0 +1,44 @@
+#!/bin/sh
+set -e
+
+PKG_CONF="/etc/pkg-updates-notifier.conf"
+
+create_first_time_configuration() {
+    if [ ! -f "${PKG_CONF}" ]; then
+        cat <<EOF > "${PKG_CONF}"
+[smtp]
+relay = ""
+auth_username = ""
+auth_password = ""
+
+[mail]
+from = ""
+to = ""
+EOF
+    fi
+}
+
+# Source debconf library.
+#. /usr/share/debconf/confmodule
+
+case "$1" in
+configure)
+    # echo "[smtp]" > "$PKG_CONF"
+    # db_get apt-updates-notifier/smtp_relay
+    # echo "relay = \"$RET\"" >> "$PKG_CONF"
+    # db_get apt-updates-notifier/smtp_username
+    # echo "auth_username = \"$RET\"" >> "$PKG_CONF"
+    # db_get apt-updates-notifier/smtp_password
+    # echo "auth_password = \"$RET\"" >> "$PKG_CONF"
+    # echo "[mail]" >> "$PKG_CONF"
+    # db_get apt-updates-notifier/mail_from
+    # echo "from = \"$RET\"" >> "$PKG_CONF"
+    # db_get apt-updates-notifier/mail_to
+    # echo "to = [\"$RET\"]" >> "$PKG_CONF"
+
+    #/usr/bin/apt-updates-notifier --config "${PKG_CONF}" configure
+    create_first_time_configuration
+    ;;
+esac
+
+#DEBHELPER#

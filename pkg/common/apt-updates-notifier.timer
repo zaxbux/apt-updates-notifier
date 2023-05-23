@@ -1,0 +1,10 @@
+[Unit]
+Description=Checks for package updates and sends a notification.
+Requires=apt-updates-notifier.service
+
+[Timer]
+Unit=apt-updates-notifier.service
+OnCalendar=*-*-* 00:00:00
+
+[Install]
+WantedBy=timers.target

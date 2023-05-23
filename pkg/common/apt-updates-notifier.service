@@ -1,0 +1,16 @@
+[Unit]
+Description=Checks for package updates and sends a notification.
+Wants=apt-updates-notifier.timer
+AssertPathExists=/usr/bin/apt-updates-notifier
+
+[Service]
+Type=oneshot
+#WorkingDirectory=~
+ExecStart=/usr/bin/apt-updates-notifier
+#Restart=always
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+Alias=apt-updates-notifier
+WantedBy=default.target

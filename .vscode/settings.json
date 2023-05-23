@@ -1,0 +1,3 @@
+{
+	"rust-analyzer.runnables.cargoExtraArgs": ["--", "--config", "./pkg-updates-notifier.conf"]
+}
